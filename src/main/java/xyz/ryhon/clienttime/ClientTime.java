@@ -9,14 +9,11 @@ import net.minecraft.client.util.InputUtil;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
