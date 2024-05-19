@@ -1,0 +1,19 @@
+{
+	"category.clienttime": "Client Time",
+	"key.clienttime.menu": "Open Menu",
+	"key.clienttime.toggle": "Toggle Time Override",
+	"key.clienttime.toggleWeather": "Toggle Weather Override",
+	"key.clienttime.toggleRain": "Toggle Rain",
+	"key.clienttime.toggleThunder": "Toggle Thunder",
+	"key.clienttime.toggleMoonPhase": "Toggle Moon Phase Override",
+	"key.clienttime.cycleMoonPhase": "Cycle Moon Phase",
+	"key.clienttime.sunrise": "Set Time to Sunrise",
+	"key.clienttime.noon": "Set Time to Noon",
+	"key.clienttime.sunset": "Set Time to Sunset",
+	"key.clienttime.midnight": "Set Time to Midnight",
+
+	"clienttime.timeScreen.time": "Time",
+	"clienttime.timeScreen.timePresets": "Time Presets",
+	"clienttime.timeScreen.moonPhase": "Moon Phase",
+	"clienttime.timeScreen.weather": "Weather"
+}

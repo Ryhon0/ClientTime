@@ -1,0 +1,21 @@
+{
+	"modmenu.descriptionTranslation.client-time": "Zmień godzinę i pogodę na kliencie.",
+
+	"category.clienttime": "Client Time",
+	"key.clienttime.menu": "Otwórz menu",
+	"key.clienttime.toggle": "Przełącz zmianę czasu",
+	"key.clienttime.toggleWeather": "Przełącz zmianę pogody",
+	"key.clienttime.toggleRain": "Przełącz deszcz",
+	"key.clienttime.toggleThunder": "Przełącz burzę",
+	"key.clienttime.toggleMoonPhase": "Przełącz zmianę fazy Księżyca",
+	"key.clienttime.cycleMoonPhase": "Cykluj fazę Księżyca",
+	"key.clienttime.sunrise": "Ustaw czas na wschód słońca",
+	"key.clienttime.noon": "Ustaw czas na południe",
+	"key.clienttime.sunset": "Ustaw czas na zachód słońca",
+	"key.clienttime.midnight": "Ustaw czas na północ",
+
+	"clienttime.timeScreen.time": "Czas",
+	"clienttime.timeScreen.timePresets": "Presety czasu",
+	"clienttime.timeScreen.moonPhase": "Faza Księżyca",
+	"clienttime.timeScreen.weather": "Pogoda"
+}
