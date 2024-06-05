@@ -7,6 +7,7 @@ import org.joml.Math;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
@@ -173,30 +174,30 @@ public class TimeScreen extends Screen {
 		addSelectableChild(rainButton);
 		addDrawable(thunderButton);
 		addSelectableChild(thunderButton);
-	}
 
-	@Override
-	public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-		super.render(context, mouseX, mouseY, delta);
+		addDrawable(new Drawable() {
+			@Override
+			public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+				int clocktex = ((int) (ClientTime.time - 6000) * 62 / 24000);
+				if (clocktex < 0)
+					clocktex += 62;
+				context.drawTexture(new Identifier(String.format("textures/item/clock_%02d.png", clocktex)),
+						timeSlider.getX() + timeSlider.getWidth(), timeSlider.getY(),
+						32, 32,
+						0, 0,
+						16, 16,
+						16, 16);
 
-		int clocktex = ((int) (ClientTime.time - 6000) * 62 / 24000);
-		if (clocktex < 0)
-			clocktex += 62;
-		context.drawTexture(new Identifier(String.format("textures/item/clock_%02d.png", clocktex)),
-				timeSlider.getX() + timeSlider.getWidth(), timeSlider.getY(),
-				32, 32,
-				0, 0,
-				16, 16,
-				16, 16);
-
-		int col = ClientTime.moonPhase / 4;
-		int row = ClientTime.moonPhase % 4;
-		context.drawTexture(new Identifier("textures/environment/moon_phases.png"),
-				moonPhaseSlider.getX() + moonPhaseSlider.getWidth(), moonPhaseSlider.getY(),
-				32, 32,
-				row * 32, col * 32,
-				32, 32,
-				128, 64);
+				int col = ClientTime.moonPhase / 4;
+				int row = ClientTime.moonPhase % 4;
+				context.drawTexture(new Identifier("textures/environment/moon_phases.png"),
+						moonPhaseSlider.getX() + moonPhaseSlider.getWidth(), moonPhaseSlider.getY(),
+						32, 32,
+						row * 32, col * 32,
+						32, 32,
+						128, 64);
+			}
+		});
 	}
 
 	public static class SimpleSlider extends SliderWidget {
@@ -246,8 +247,8 @@ public class TimeScreen extends Screen {
 		}
 
 		@Override
-		public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-			super.render(context, mouseX, mouseY, delta);
+		public void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
+			super.renderButton(context, mouseX, mouseY, delta);
 			context.drawTexture(texture,
 					getX() + (getWidth() / 4), getY() + (getHeight() / 4),
 					getWidth() / 2, getHeight() / 2,
@@ -281,7 +282,7 @@ public class TimeScreen extends Screen {
 		}
 
 		@Override
-		public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+		public void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
 			context.drawGuiTexture(TEXTURE, this.getX(), this.getY(), width, height);
 
 			context.setShaderColor(1.0F, 1.0F, 1.0F, checked ? 1f : 0.1f);
@@ -294,7 +295,6 @@ public class TimeScreen extends Screen {
 					texSize, texSize);
 			context.setShaderColor(1.0F, 1.0F, 1.0F, 1f);
 			RenderSystem.disableBlend();
-
 		}
 	}
 
