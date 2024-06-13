@@ -60,28 +60,28 @@ public class TimeScreen extends Screen {
 		timeText.setPosition(timeSlider.getX(), timeSlider.getY() - textRenderer.fontHeight);
 		addDrawableChild(timeText);
 
-		sunriseButton = new ButtonWithIcon(new Identifier("textures/item/clock_48.png"), 32,
+		sunriseButton = new ButtonWithIcon(Identifier.of("textures/item/clock_48.png"), 32,
 				timeText.getX(), timeText.getY() - 32,
 				32, 32,
 				Text.empty(), (ButtonWidget b) -> {
 					ClientTime.time = 0;
 					timeSlider.setIValue(0);
 				});
-		noonButton = new ButtonWithIcon(new Identifier("textures/item/clock_00.png"), 32,
+		noonButton = new ButtonWithIcon(Identifier.of("textures/item/clock_00.png"), 32,
 				sunriseButton.getX() + 32, sunriseButton.getY(),
 				32, 32,
 				Text.empty(), (ButtonWidget b) -> {
 					ClientTime.time = 6000;
 					timeSlider.setIValue(6000);
 				});
-		sunsetButton = new ButtonWithIcon(new Identifier("textures/item/clock_15.png"), 32,
+		sunsetButton = new ButtonWithIcon(Identifier.of("textures/item/clock_15.png"), 32,
 				noonButton.getX() + 32, noonButton.getY(),
 				32, 32,
 				Text.empty(), (ButtonWidget b) -> {
 					ClientTime.time = 12000;
 					timeSlider.setIValue(12000);
 				});
-		midnightButton = new ButtonWithIcon(new Identifier("textures/item/clock_32.png"), 32,
+		midnightButton = new ButtonWithIcon(Identifier.of("textures/item/clock_32.png"), 32,
 				sunsetButton.getX() + 32, sunsetButton.getY(),
 				32, 32,
 				Text.empty(), (ButtonWidget b) -> {
@@ -103,7 +103,7 @@ public class TimeScreen extends Screen {
 		addSelectableChild(midnightButton);
 
 		timeEnabledButton = new CheckboxButton(ClientTime.timeEnabled,
-				new Identifier("client-time", "textures/gui/checkmark.png"), 16,
+				Identifier.of("client-time", "textures/gui/checkmark.png"), 16,
 				timeSlider.getX() - 32 + CheckboxPadding, timeSlider.getY() + CheckboxPadding,
 				32 - (CheckboxPadding * 2), 32 - (CheckboxPadding * 2),
 				Text.empty(), (ButtonWidget b) -> {
@@ -129,7 +129,7 @@ public class TimeScreen extends Screen {
 		moonPhaseSlider.setPosition(moonPhaseText.getX(), moonPhaseText.getY() + moonPhaseText.getHeight());
 
 		moonPhaseEnabledButton = new CheckboxButton(ClientTime.moonPhaseEnabled,
-				new Identifier("client-time", "textures/gui/checkmark.png"), 16,
+				Identifier.of("client-time", "textures/gui/checkmark.png"), 16,
 				moonPhaseSlider.getX() - 32 + CheckboxPadding, moonPhaseSlider.getY() + CheckboxPadding,
 				32 - (CheckboxPadding * 2), 32 - (CheckboxPadding * 2),
 				Text.empty(), (ButtonWidget b) -> {
@@ -145,7 +145,7 @@ public class TimeScreen extends Screen {
 		addDrawableChild(weatherText);
 
 		rainButton = new CheckboxButton(ClientTime.rain,
-				new Identifier("client-time", "textures/gui/rain.png"), 8,
+				Identifier.of("client-time", "textures/gui/rain.png"), 8,
 				weatherText.getX(), weatherText.getY() + weatherText.getHeight(),
 				32, 32,
 				Text.empty(), (ButtonWidget b) -> {
@@ -153,7 +153,7 @@ public class TimeScreen extends Screen {
 				});
 
 		thunderButton = new CheckboxButton(ClientTime.thunder,
-				new Identifier("client-time", "textures/gui/thunder.png"), 8,
+				Identifier.of("client-time", "textures/gui/thunder.png"), 8,
 				rainButton.getX() + 32, rainButton.getY(),
 				32, 32,
 				Text.empty(), (ButtonWidget b) -> {
@@ -161,7 +161,7 @@ public class TimeScreen extends Screen {
 				});
 
 		weatherEnabledButton = new CheckboxButton(ClientTime.weatherEnabled,
-				new Identifier("client-time", "textures/gui/checkmark.png"), 16,
+				Identifier.of("client-time", "textures/gui/checkmark.png"), 16,
 				rainButton.getX() - 32 + CheckboxPadding, rainButton.getY() + CheckboxPadding,
 				32 - (CheckboxPadding * 2), 32 - (CheckboxPadding * 2),
 				Text.empty(), (ButtonWidget b) -> {
@@ -181,7 +181,7 @@ public class TimeScreen extends Screen {
 				int clocktex = ((int) (ClientTime.time - 6000) * 62 / 24000);
 				if (clocktex < 0)
 					clocktex += 62;
-				context.drawTexture(new Identifier(String.format("textures/item/clock_%02d.png", clocktex)),
+				context.drawTexture(Identifier.of(String.format("textures/item/clock_%02d.png", clocktex)),
 						timeSlider.getX() + timeSlider.getWidth(), timeSlider.getY(),
 						32, 32,
 						0, 0,
@@ -190,7 +190,7 @@ public class TimeScreen extends Screen {
 
 				int col = ClientTime.moonPhase / 4;
 				int row = ClientTime.moonPhase % 4;
-				context.drawTexture(new Identifier("textures/environment/moon_phases.png"),
+				context.drawTexture(Identifier.of("textures/environment/moon_phases.png"),
 						moonPhaseSlider.getX() + moonPhaseSlider.getWidth(), moonPhaseSlider.getY(),
 						32, 32,
 						row * 32, col * 32,
@@ -247,8 +247,8 @@ public class TimeScreen extends Screen {
 		}
 
 		@Override
-		public void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
-			super.renderButton(context, mouseX, mouseY, delta);
+		public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
+			super.renderWidget(context, mouseX, mouseY, delta);
 			context.drawTexture(texture,
 					getX() + (getWidth() / 4), getY() + (getHeight() / 4),
 					getWidth() / 2, getHeight() / 2,
@@ -259,7 +259,7 @@ public class TimeScreen extends Screen {
 	}
 
 	public static class CheckboxButton extends ButtonWidget {
-		private static final Identifier TEXTURE = new Identifier("widget/checkbox");
+		private static final Identifier TEXTURE = Identifier.of("widget/checkbox");
 		Identifier checkTexture;
 		int texSize;
 		public boolean checked;
@@ -282,7 +282,7 @@ public class TimeScreen extends Screen {
 		}
 
 		@Override
-		public void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
+		public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
 			context.drawGuiTexture(TEXTURE, this.getX(), this.getY(), width, height);
 
 			context.setShaderColor(1.0F, 1.0F, 1.0F, checked ? 1f : 0.1f);
