@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.8-SNAPSHOT'
 	id 'maven-publish'
+	id "com.modrinth.minotaur" version "2.+"
 }
 
 version = project.mod_version
@@ -10,8 +11,24 @@ base {
 	archivesName = project.archives_base_name
 }
 
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "clienttime"
+    versionNumber = project.mod_version
+    versionType = "release"
+    uploadFile = remapJar
+    gameVersions = [project.minecraft_version]
+    loaders = ["fabric", "quilt"]
+    dependencies {
+        required.project "fabric-api"
+        optional.project "modmenu"
+    }
+}
+
+
 repositories {
 	maven { url = "https://maven.terraformersmc.com/" }
+	gradlePluginPortal()
 }
 
 dependencies {
