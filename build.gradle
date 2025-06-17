@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.8-SNAPSHOT'
+	id 'fabric-loom' version '1.10-SNAPSHOT'
 	id 'maven-publish'
 	id "com.modrinth.minotaur" version "2.+"
 }
@@ -14,7 +14,7 @@ base {
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
     projectId = "clienttime"
-    versionNumber = project.mod_version
+    versionNumber = project.mod_version + "-" + project.minecraft_version
     versionType = "release"
     uploadFile = remapJar
     gameVersions = [project.minecraft_version]
