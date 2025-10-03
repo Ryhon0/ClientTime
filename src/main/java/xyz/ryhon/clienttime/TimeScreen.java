@@ -4,16 +4,14 @@ import java.util.function.Consumer;
 
 import org.joml.Math;
 
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-
 import net.minecraft.client.gl.RenderPipelines;
+import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
 import net.minecraft.client.gui.widget.TextWidget;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -280,9 +278,9 @@ public class TimeScreen extends Screen {
 		}
 
 		@Override
-		public void onClick(double mouseX, double mouseY) {
+		public void onClick(Click click, boolean doubled) {
 			checked = !checked;
-			super.onClick(mouseX, mouseY);
+			super.onClick(click, doubled);
 		}
 
 		@Override
